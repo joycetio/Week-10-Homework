@@ -4,3 +4,9 @@ my-tweets
 do-what-it-says "I Want it That Way"
 do-what-it-says "I Want it That Way"
 movie-this How to Train your Dragon
+spotify-this-song Nobody Love
+my-tweets 
+my-tweets 
+movie-this Beauty and the Beast
+do-what-it-says "I Want it That Way"
+do-what-it-says "I Want it That Way"

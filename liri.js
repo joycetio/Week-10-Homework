@@ -37,8 +37,11 @@ switch (command) {
 };
 
 //twitter npm package
+
+
 function myTweets() {
-    client.get("statuses/user_timeline", function(error, tweets, response) {
+	var params = {screen_name: 'mjoyce_tio'}; 
+    client.get("statuses/user_timeline", params, function(error, tweets, response) {
         if (!error) {
             // console.log("twitter: ", tweets);
             console.log("----------");

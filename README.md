@@ -32,6 +32,10 @@ command line node app that takes in parameters and gives you back data.
     * Using the fs Node package, LIRI will take the text inside of random.txt and then use it to call one of LIRI's commands. 
         * It should run spotify-this-song for "I Want it That Way," as follow the text in random.txt. 
         * Feel free to change the text in that document to test out the feature for other commands.   
+BONUS: 
+    * In addition to logging the data to your terminal, output the datat to a .txt file called log.txt. 
+    * Make sure to append each command you run to the log.txt file. 
+    * Do not overwrite your file each time you run a command.
 
 ## Technologies Used: 
 * node.js 

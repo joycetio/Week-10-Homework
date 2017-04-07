@@ -56,6 +56,7 @@ function myTweets() {
 function spotifySong() {
     //search tracks using spotify & if there's no user input, it automatically shows the search results for "The Sign" by Ace of Base
     spotify.search({ type: 'track', query: userInput || "The Sign Ace of Base" }, function(err, data) {
+
         var songData = data.tracks.items;
 
         //just in case of an error
@@ -65,7 +66,7 @@ function spotifySong() {
 
         //for searches with more than one result
         if (songData.length > 0) {
-            var firstResult = songData[0];
+            var firstResult = data.tracks.items[0];
             console.log("----------");
             console.log("YOU SEARCHED FOR " + userInput);
             console.log("Artist: " + firstResult.artists[0].name);
@@ -110,19 +111,24 @@ function doWhatItSays() {
         //in case of an error
         if (error) throw error;
 
-        // console.log("random.txt content: " + data); 
-
         var dataArr = data.split(",");
-        console.log("data array: ", dataArr);
+        // console.log("data array: ", dataArr);
 
-        command = dataArr[0].trim();
         userInput = dataArr[1].trim();
+        // console.log(userInput);
 
-        console.log(command);
-        console.log(userInput);
+        switch (dataArr[0].trim()) {
+            case "my-tweets":
+                myTweets();
+                break;
 
+            case "spotify-this-song":
+                spotifySong(userInput);
+                break;
+
+            case "movie-this":
+                movieThis(userInput);
+                break;
+        };
     });
 };
-
-
-

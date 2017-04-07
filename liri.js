@@ -36,7 +36,7 @@ switch (command) {
         break;
 };
 
-
+//twitter npm package
 function myTweets() {
     client.get("statuses/user_timeline", function(error, tweets, response) {
         if (!error) {
@@ -50,9 +50,12 @@ function myTweets() {
         } else {
             console.log(error);
         }
+
+        log();
     });
 };
 
+//spotify npm package 
 function spotifySong() {
     //search tracks using spotify & if there's no user input, it automatically shows the search results for "The Sign" by Ace of Base
     spotify.search({ type: 'track', query: userInput || "The Sign Ace of Base" }, function(err, data) {
@@ -77,9 +80,12 @@ function spotifySong() {
         } else {
             console.log("No songs found! Try another song.");
         }
+
+        log();
     });
 };
 
+//request npm package 
 function movieThis() {
     request('http://www.omdbapi.com/?t=' + (userInput || "Mr. Nobody") + "&tomatoes=true", function(error, response, body) {
         if (!error && response.statusCode === 200) {
@@ -101,6 +107,8 @@ function movieThis() {
         } else {
             console.log("Error occurred: ", error);
         };
+
+        log();
     });
 };
 
@@ -114,9 +122,10 @@ function doWhatItSays() {
         var dataArr = data.split(",");
         // console.log("data array: ", dataArr);
 
-        userInput = dataArr[1].trim();
+        userInput = dataArr[1];
         // console.log(userInput);
 
+        //decides which function to run based on text file
         switch (dataArr[0].trim()) {
             case "my-tweets":
                 myTweets();
@@ -130,5 +139,19 @@ function doWhatItSays() {
                 movieThis(userInput);
                 break;
         };
+
+        log();
     });
+};
+
+//appends every node command in log.txt
+function log(data) {
+	fs.appendFile("log.txt", command + " " + userInput + "" + '\n', function(err) {
+		//in case of an error: 
+		if (err) {
+			console.log("Error occured", err); 
+		} else {
+			// console.log("content added to file");
+		}
+	});
 };

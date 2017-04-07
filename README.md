@@ -6,7 +6,7 @@ SIRI. However, while SIRI is a Speech Interpretation and Recognition Interface,
 LIRI is a Language Interpretation and Recognition Interface. LIRI will be a
 command line node app that takes in parameters and gives you back data.
 
-# Instructions: What Each Command Should Do 
+## Instructions: What Each Command Should Do 
 1. node liri.js my-tweets 
     * This will show your last 20 tweets and when they were created at in your terminal/bash window. 
 2. node liri.js spotify-this-song (song name here)
@@ -31,4 +31,33 @@ command line node app that takes in parameters and gives you back data.
 4. node liri.js do-what-it-says
     * Using the fs Node package, LIRI will take the text inside of random.txt and then use it to call one of LIRI's commands. 
         * It should run spotify-this-song for "I Want it That Way," as follow the text in random.txt. 
-        * Feel free to change the text in that document to test out the feature for other commands.         
+        * Feel free to change the text in that document to test out the feature for other commands.   
+
+## Technologies Used: 
+* node.js 
+* twitter npm package 
+* spotify npm package
+* request npm package 
+
+## Code Explanation
+* Using the switch-case to determine which function will run based on the parameters the user inputs. 
+````
+switch (command) {
+    case "my-tweets":
+        myTweets();
+        break;
+
+    case "spotify-this-song":
+        spotifySong();
+        break;
+
+    case "movie-this":
+        movieThis();
+        break;
+
+    case "do-what-it-says":
+        doWhatItSays();
+        break;
+};
+````
+

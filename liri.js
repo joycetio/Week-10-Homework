@@ -3,6 +3,8 @@ var fs = require("fs");
 var twitter = require("twitter");
 var spotify = require("spotify");
 var request = require("request");
+var command = process.argv[2];
+var userInput = process.argv.splice(3);
 
 //grabs the keys from keys.js and stores it into a var
 var keys = require("./keys.js")
@@ -14,8 +16,6 @@ var client = new twitter({
     access_token_secret: keys.twitterKeys.access_token_secret
 });
 
-var command = process.argv[2];
-var userInput = process.argv[3]
 
 //switch-case that will direct which function runs
 switch (command) {
@@ -35,6 +35,7 @@ switch (command) {
         doWhatItSays();
         break;
 };
+
 
 function myTweets() {
     client.get("statuses/user_timeline", function(error, tweets, response) {
@@ -80,7 +81,7 @@ function spotifySong() {
 
 function movieThis() {
     request('http://www.omdbapi.com/?t=' + (userInput || "Mr. Nobody") + "&tomatoes=true", function(error, response, body) {
-        if (!error) {
+        if (!error && response.statusCode === 200) {
             //parses through the data received
             var movieData = JSON.parse(body);
 
@@ -101,3 +102,27 @@ function movieThis() {
         };
     });
 };
+
+function doWhatItSays() {
+    //access random.txt and reads data inside the file
+    fs.readFile("random.txt", "utf8", function(error, data) {
+
+        //in case of an error
+        if (error) throw error;
+
+        // console.log("random.txt content: " + data); 
+
+        var dataArr = data.split(",");
+        console.log("data array: ", dataArr);
+
+        command = dataArr[0].trim();
+        userInput = dataArr[1].trim();
+
+        console.log(command);
+        console.log(userInput);
+
+    });
+};
+
+
+

@@ -10,3 +10,6 @@ my-tweets
 movie-this Beauty and the Beast
 do-what-it-says "I Want it That Way"
 do-what-it-says "I Want it That Way"
+my-tweets 
+spotify-this-song Nobody,Love
+movie-this The,Secret,Life,of,Pets

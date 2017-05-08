@@ -37,8 +37,6 @@ switch (command) {
 };
 
 //twitter npm package
-
-
 function myTweets() {
 	var params = {screen_name: 'mjoyce_tio'}; 
     client.get("statuses/user_timeline", params, function(error, tweets, response) {
@@ -123,10 +121,8 @@ function doWhatItSays() {
         if (error) throw error;
 
         var dataArr = data.split(",");
-        // console.log("data array: ", dataArr);
 
         userInput = dataArr[1];
-        // console.log(userInput);
 
         //decides which function to run based on text file
         switch (dataArr[0].trim()) {
@@ -153,8 +149,6 @@ function log(data) {
 		//in case of an error: 
 		if (err) {
 			console.log("Error occured", err); 
-		} else {
-			// console.log("content added to file");
-		}
+		} 
 	});
 };
